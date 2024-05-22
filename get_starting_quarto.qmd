@@ -1,0 +1,278 @@
+---
+title: "Introdução ao Quarto"
+author: "Davi Yokogawa"
+date: "`r Sys.Date()`"
+engine: knitr
+format:
+    html:
+        embed-resources: true
+        code-fold: true
+        code-tools: true
+include-in-header:
+  - text: |
+     <link rel = "shortcut icon" href = "img/quarto-favicon.png"/>
+---
+
+![](img/get-started-quarto.png)
+[https://quarto.org/docs/blog/posts/2023-05-15-get-started/](https://quarto.org/docs/blog/posts/2023-05-15-get-started/)
+
+# O que é Quarto?
+
+Quarto é uma ferramenta Open-Source desenvolvida pela Posit (Antiga RStudio).
+
+Com o Quarto podemos criar vários tipos de documentos, sendo eles baseados em Markdown.
+
+O principal diferencial do Quarto é a facilidade de integração de linguagens de programação com o documento, sendo possível criar relatórios dinâmicos através do poder das linguagens de programação, a facilidade de escrita através do Markdown, a facilidade de customização através de HTML e CSS e os vários formatos de exportação através do Pandoc.
+
+Hoje, o Quarto suporta nativamente as seguintes linguagens:
+
+-   Python
+
+-   R
+
+-   Julia
+
+-   JavaScrypt
+
+A evolução do Rmarkdown para o Quarto foi uma evolução natural, entrando muito em linha com a nova proposta da Posit, de criar um ambiente robusto para a Ciência de Dados, mas ao mesmo tempo não dependente do R e do RStudio. Um exemplo disso é o atual documento que você está lendo, que foi feito inteiramente no Quarto utilizando o VsCode, porém se eu quisesse, poderia optar por ferramentas como o Jupyter Notebook, Vim, Nano ou o próprio RStudio.
+
+O grande poder do Quarto no **MEU** ponto de vista é a facilidade de criar relatórios dinâmicos e automatizados, pois como podemos incluir trechos de código pelo relatório, fica fácil automatizar a criação de relatórios e fazer o que quisermos através do poder da programação.
+
+::: callout-note
+Neste documento será utilizado o R como linguagem de programação, nas demonstrações de código, mas você pode utilizar as outras citadas anteriormente.
+:::
+
+# Instalação
+
+A instalação do Quarto é super simples, em seu site eles disponibilizam o download do CLI por lá mesmo e por lá também, você consegue ter algumas instruções básicas de como utilizar o Quarto com a sua ferramenta de preferência.
+
+Segue o link para download do Quarto: <https://quarto.org/docs/get-started/>
+
+# Markdown
+
+Andes de começar a falar sobre o Quarto, é importante entender o que é Markdown. Markdown é uma linguagem de marcação que foi criada por John Gruber e Aaron Swartz em 2004, com o objetivo de ser uma linguagem de marcação simples e fácil de ser lida e escrita por humanos. Para facilitar o uso do Quarto, é importante entender o básico do Markdown, pois é a linguagem que será utilizada para escrever os documentos.
+
+### Sintaxe Básica
+
+Através do que será mostrado abaixo, você será capaz de criar um documento básico em Markdown e consequentemente no Quarto, obviamente, o Markdown possui muito mais do que o que será mostrado abaixo, mas o que será mostrado é o suficiente para você começar a escrever seus documentos e é com isso que você irá lidar em 90% do tempo.
+
++---------------------------------------------------------+---------------------------------------------------------+
+| Markdown Sintax                                         | Output                                                  |
++=========================================================+=========================================================+
+| ``` markdown                                            | # Header 1 {.heading-output}                            |
+| # Header 1                                              |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+| ``` markdown                                            | ## Header 2 {.heading-output}                           |
+| # Header 2                                              |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+| ``` markdown                                            | ###### Header 6                                         |
+| # Header 6                                              |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+| ``` markdown                                            | **Texto em Negrito**                                    |
+| **Bold**                                                |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+| ``` markdown                                            | *Texto em itálico*                                      |
+| *Italic*                                                |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+| ``` markdown                                            | *** Texto em negrito itálico***                         |
+| ***Bold Italic***                                       |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+| ``` markdown                                            | ~~Texto riscado~~                                       |
+| ~~Riscado~~                                             |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+| ``` markdown                                            | `Trecho de Código`                                      |
+| `Code`                                                  |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+| ``` markdown                                            | [Quarto Guide](https://quarto.org/docs/guide/)          |
+| [Quarto Guide](https://quarto.org/docs/guide/)          |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+| ``` markdown                                            | ![Quarto Image](img/quarto-favicon.png)                 |
+| ![Quarto Image](img/quarto-favicon.png)                 |                                                         |
+| ```                                                     |                                                         |
++---------------------------------------------------------+---------------------------------------------------------+
+
+# Quarto
+
+Agora que você já entendeu sobre o Markdown, lidar com o Quarto será muito mais fácil, pois o Quarto é basicamente um Markdown turbinado, onde você pode incluir trechos de código, dos quais o próprio Quarto irá executar e incluir o output no documento. Esses outputs podem ser gráficos, tabelas, texto, etc.
+E é aqui que temos a grande força do Quarto, afinal, através disso podemos criar relatórios dinâmicos e automatizados que conforme o tempo e conforme a sua base de dados atualize, o relatório também irá atualizar, sem que você precise ficar atualizando manualmente, basta criar um script que faça isso para você.
+
+Para conseguir fazer tudo isso, teremos que aprender a lidar com os **Chuncks** de código, que são os trechos de código que serão executados pelo Quarto, e para isso, temos que aprender a lidar com os **Chuncks Options**, que são as opções que podemos passar para o Quarto, para que ele saiba como lidar com o trecho de código.
+Eu poderia muito bem fazer uma explicação mega detalhada sobre cada uma das opções disponíveis nos chunks, mas a Posit já se encarregou disso e através da imagem abaixo, você consegue ter uma visão geral de todas as opções disponíveis e o que cada uma delas faz.
+
+[![Chunk Options](img/chunk-options.png)](https://r4ds.hadley.nz/quarto)
+Link: [https://r4ds.hadley.nz/quarto](https://r4ds.hadley.nz/quarto)
+
+### Exemplos de utilização das Chunk Options
+
+Através da tabela acima, você consegue entender o que as opções fazem, porém abaixo vou dar alguns exemplos.
+
+```markdown
+Esse bloco em estamos atualmente funciona como se fosse uma célula de código do Jupyter Notebook, onde você pode executar o código e ver o output dele, para utiliza-la, basta colocar o código entre três crases e no início das três crases, colocar a linguagem que você está utilizando, no caso do R, seria `r`.
+
+
+#| eval: TRUE
+#| include: FALSE 
+
+
+Explicando um pouco os exemplos acima.
+
+- Através do `eval = TRUE`, o Quarto irá executar o trecho de código, porém como podemos ver, na imagem anterior, se utilizarmos apenas ele, o Quarto irá incluir o Output do código, possíveis gráficos, mensagens, warnings e tudo que for gerado pelo código.
+- Com o include = FALSE combinado com o eval = TRUE, o Quarto irá executar o código, porém não irá incluir o output no documento.
+
+Isso é útil quando você quer fazer alguma operação, mas não quer que o output seja incluído no documento, como por exemplo criar uma variável auxiliar, fazer a leitura de um arquivo, etc.
+```
+
+```markdown
+
+#| eval: TRUE
+#| include: TRUE
+#| message: FALSE
+#| warning: FALSE
+
+No exemplo acima por exemplo, o Quarto irá executar o código, incluir o output no documento, porém não irá incluir mensagens e warnings que forem gerados pelo código.
+Através disso, você consegue controlar o que é incluído no documento. Vou dar apenas esses exemplos, pois acredito que com isso você já consegue começar a escrever seus documentos e conforme for utilizando o Quarto, você vai aprendendo mais sobre as opções disponíveis e como utilizá-las.
+```
+
+# Mãos a Obra
+
+Com as introduções anterioes, você já é capaz de começar a escrever seus documentos, então vamos praticar um pouco, criar alguns gráficos, algumas tabelas e alguns outputs de texto. Através desse documento simples que será criado abaixo, poderemos ver como o Quarto funciona e em um outro momento, criaremos um documento do qual poderá ser automatizado.
+
+Nesse exemplo, iremos utilizar a base do `mtcars` que é uma base de dados que já vem no R e é muito utilizada para exemplos práticos.
+
+```{r}
+#| eval: TRUE
+#| message: FALSE
+
+library(tidyverse)
+
+mtcars_ <- mtcars %>% 
+  tibble::rownames_to_column(var = "car")
+
+head(mtcars_)
+```
+
+Acima podemos observar o código que foi executado, onde foi feita a leitura da base de dados `mtcars` e mostrado a manipulação para que os indices das linhas da base de dados virasse uma coluna, afinal, é o nome dos carros e é muito mais fácil de trabalhar dessa forma. Além dissom foi mostrado as primeiras linhas da base de dados, nada de mais, mas é um começo.
+
+Vamos criar uma lista com a descrição de cada variável da base de dados `mtcars`.
+
+### Descrição das Variáveis
+
+* car: Nome do carro
+* mpg: Milhas por galão
+* cyl: Número de cilindros
+* disp: Deslocamento
+* hp: Cavalos de potência
+* drat: Relação do eixo traseiro
+* wt: Peso
+* qsec: Tempo de quarto de milha
+* vs: Motor (0 = V-shaped, 1 = straight)
+* am: Transmissão (0 = automática, 1 = manual)
+* gear: Número de marchas
+* carb: Número de carburadores
+
+No próprio quarto poderiamos criar funções ou fazer manipulações de tabelas para tratar os dados, etc. A minha recomendação para isso é que seja criado funções auxiliares fora do arquivo e através da função `source("caminho/ao/arquivo_auxiliar.R")`, você pode incluir essas funções no seu documento. Isso é muito útil para manter o código organizado e como o objetivo do documento é ser um relatório, é importante que o código seja o mais limpo possível.
+
+No caso desse documento esses tratamentos de dados não serão feitos pois não é o objetivo do documento, mas é importante que você saiba que é possível e uma boa prática fazer isso.
+
+Agora que temos a descrição das variáveis e sabemos o que cada uma delas representa, podemos colocar no nosso relatório algumas informações sobre a base de dados, como por exemplo, disponibilizar no próprio texto quais são os três carros que possuem o maior **hp (Cavalos de Potência)**.
+
+### Exemplo de código inserido no texto
+
+Atualmente nos dados analisaos, os 5 carros que possuem o maior **hp** são:
+
+`r paste(mtcars_ %>% arrange(desc(hp))%>% head(5) %>% pull(car), collapse = ", ")`
+
+E seus respectivos valores de **hp** são:
+
+`r paste(mtcars_ %>% arrange(desc(hp))%>% head(5) %>% pull(hp), collapse = ", ")`
+
+Obviamente, essa não é a melhor forma de apresentar essa informação, poderiamos ver isso tabelado, ou até mesmo em um gráfico, mas para exemplificar o que pode ser feito, acredito que seja o suficiente.
+
+::: callout-note
+O código executado acima, obviamente não será mostrado pois ele faz parte do output do código, mas olhando no canto superior direito, podemos encontrar todo o código que foi executado para gerar os outputs.
+:::
+
+Para pensarmos um pouco na utilidade do que foi apresentado no exemplo acima, pense que você possui uma loja de carros em que todos os dias existe uma rotatividade de carros, então, você pode criar um relatório que se atualiza diariamente para você com as informações dos carros que possui em sua loja. Quais marcas foram mais vendidas, quais modelos, quais são mais possuem para venda atualmente, enfim, apenas alguns exemplos, o que determina o que você vai apresentar é a necessidade do negócio.
+
+#### Criando alguns gráficos
+
+Se estamos falando de relatórios, não podemos deixar de falar de gráficos, afinal, eles são uma das melhores formas de apresentar informações de forma visual e de fácil entendimento. Então vamos criar alguns gráficos para exemplificar.
+
+::: callout-note
+O foco aqui não é a criação de gráficos, então não vou me aprofundar muito nesse assunto, mas é importante que você saiba que se você possui uma biblioteca gráfica em sua linguagem de programação, você pode utilizá-la no Quarto.
+:::
+
+```{r}
+#| eval: TRUE
+#| include: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig.width: 10
+#| fig.height: 6
+
+
+# Gráfico de dispersão entre hp e mpg
+mtcars_ %>% 
+  ggplot(aes(x = hp, y = mpg)) +
+  geom_point(colour = "#375a7e", alpha = 0.8) +
+  labs(title = "Relação entre hp e mpg",
+       x = "Cavalos de Potência (hp)",
+       y = "Milhas por Galão (mpg)") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(
+      hjust = 0.5,
+      face = "bold",
+      size = 14
+      ),
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10)
+    )
+```
+
+No gráfico acima, foi feito um gráfico de dispersão entre **hp** e **mpg**, onde podemos ver a relação entre essas duas variáveis. Através desse gráfico, podemos ver que quanto maior o **hp**, menor o **mpg**, o que faz sentido, afinal, carros com mais cavalos de potência tendem a consumir mais combustível.
+
+Agora, vamos criar um gráfico de barras para ver a quantidade de carros que possuem cada número de cilindros.
+
+```{r}
+#| eval: TRUE
+#| include: TRUE
+#| message: FALSE
+#| warning: FALSE
+#| fig.width: 10
+#| fig.height: 6
+
+mtcars_ %>% 
+  ggplot(aes(x = factor(cyl))) +
+  geom_bar(fill = "#375a7e", alpha = 0.8) +
+  geom_text(
+    aes(label = ..count..),
+    stat = "count",
+    vjust = -0.5,
+    size = 3
+    ) +
+  labs(title = "Quantidade de carros por número de cilindros",
+       x = "Número de cilindros",
+       y = "Quantidade de carros") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(
+      hjust = 0.5,
+      face = "bold",
+      size = 14
+      ),
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10)
+    )
+```
+
+No gráfico acima, podemos ver a quantidade de carros que possuem cada número de cilindros, onde podemos ver que a maioria dos carros possuem 8 cilindros, seguido por 4 cilindros e por último 6 cilindros. Isso é interessante pois podemos ver que a maioria dos carros possuem 8 cilindros, o que pode ser um indicativo de que a maioria dos carros são carros mais potentes.

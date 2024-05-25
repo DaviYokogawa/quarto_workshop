@@ -5,6 +5,7 @@ date: "`r Sys.Date()`"
 engine: knitr
 format:
     html:
+        page-layout: full
         embed-resources: true
         code-fold: true
         code-tools: true
@@ -15,6 +16,12 @@ include-in-header:
 
 ![](img/get-started-quarto.png)
 [https://quarto.org/docs/blog/posts/2023-05-15-get-started/](https://quarto.org/docs/blog/posts/2023-05-15-get-started/)
+
+::: callout-note
+- Nesse projeto será utilizado R como linguagem padrão, não necessariamente você precisa utilizar a mesma linguagem.
+- O foco principal do documento é explicar o Quarto em sí, vai ser apresentado exemplos de código, pois são necessários, mas o foco principal é o Quarto.
+- A base de dados que iremos utilizar é a `mtcars` que vem junto ao R, apenas para fins didáticos.
+:::
 
 # O que é Quarto?
 
@@ -34,27 +41,25 @@ Hoje, o Quarto suporta nativamente as seguintes linguagens:
 
 -   JavaScrypt
 
-A evolução do Rmarkdown para o Quarto foi uma evolução natural, entrando muito em linha com a nova proposta da Posit, de criar um ambiente robusto para a Ciência de Dados, mas ao mesmo tempo não dependente do R e do RStudio. Um exemplo disso é o atual documento que você está lendo, que foi feito inteiramente no Quarto utilizando o VsCode, porém se eu quisesse, poderia optar por ferramentas como o Jupyter Notebook, Vim, Nano ou o próprio RStudio.
+A evolução do Rmarkdown para o Quarto foi uma evolução natural, entrando muito em linha com a nova proposta da Posit, de criar um ambiente robusto para a Ciência de Dados, mas ao mesmo tempo esse ambiente não deveria depender do R e do RStudio. Um exemplo disso é o atual documento que você está lendo, que foi feito inteiramente no Quarto utilizando o VsCode, porém se eu quisesse, poderia optar por ferramentas como o Jupyter Notebook, Vim, Nano ou o próprio RStudio.
 
 O grande poder do Quarto no **MEU** ponto de vista é a facilidade de criar relatórios dinâmicos e automatizados, pois como podemos incluir trechos de código pelo relatório, fica fácil automatizar a criação de relatórios e fazer o que quisermos através do poder da programação.
 
-::: callout-note
-Neste documento será utilizado o R como linguagem de programação, nas demonstrações de código, mas você pode utilizar as outras citadas anteriormente.
-:::
-
 # Instalação
 
-A instalação do Quarto é super simples, em seu site eles disponibilizam o download do CLI por lá mesmo e por lá também, você consegue ter algumas instruções básicas de como utilizar o Quarto com a sua ferramenta de preferência.
+A instalação do Quarto é super simples, em seu site eles disponibilizam o download do CLI e por lá também você consegue ter algumas instruções básicas de como utilizar o Quarto com a sua linguagem/IDE de preferência.
 
 Segue o link para download do Quarto: <https://quarto.org/docs/get-started/>
 
 # Markdown
 
-Andes de começar a falar sobre o Quarto, é importante entender o que é Markdown. Markdown é uma linguagem de marcação que foi criada por John Gruber e Aaron Swartz em 2004, com o objetivo de ser uma linguagem de marcação simples e fácil de ser lida e escrita por humanos. Para facilitar o uso do Quarto, é importante entender o básico do Markdown, pois é a linguagem que será utilizada para escrever os documentos.
+Antes de começar a falar sobre o Quarto, é importante entender o que é Markdown.
+
+Markdown é uma linguagem de marcação que foi criada por John Gruber e Aaron Swartz em 2004, com o objetivo de ser uma linguagem de marcação simples e fácil de ser lida e escrita por humanos. Para facilitar o uso do Quarto, é importante entender o básico do Markdown, pois é a linguagem de marcação que será utilizada para escrever os documentos.
 
 ### Sintaxe Básica
 
-Através do que será mostrado abaixo, você será capaz de criar um documento básico em Markdown e consequentemente no Quarto, obviamente, o Markdown possui muito mais do que o que será mostrado abaixo, mas o que será mostrado é o suficiente para você começar a escrever seus documentos e é com isso que você irá lidar em 90% do tempo.
+Através do que será mostrado abaixo, você será capaz de criar um documento básico em Markdown e consequentemente no Quarto, obviamente, o Markdown mais do que o que será mostrado abaixo, mas o que será mostrado é o suficiente para você começar a escrever seus documentos e será com isso que você irá lidar em 90% do tempo.
 
 +---------------------------------------------------------+---------------------------------------------------------+
 | Markdown Sintax                                         | Output                                                  |
@@ -102,7 +107,7 @@ Através do que será mostrado abaixo, você será capaz de criar um documento b
 
 # Quarto
 
-Agora que você já entendeu sobre o Markdown, lidar com o Quarto será muito mais fácil, pois o Quarto é basicamente um Markdown turbinado, onde você pode incluir trechos de código, dos quais o próprio Quarto irá executar e incluir o output no documento. Esses outputs podem ser gráficos, tabelas, texto, etc.
+Agora que você já entendeu mais sobre o Markdown, lidar com o Quarto será muito mais fácil, pois o Quarto é basicamente um Markdown turbinado, onde você pode incluir trechos de código, dos quais o próprio Quarto irá executar e incluir o output no documento. Esses outputs podem ser gráficos, tabelas, texto, etc.
 E é aqui que temos a grande força do Quarto, afinal, através disso podemos criar relatórios dinâmicos e automatizados que conforme o tempo e conforme a sua base de dados atualize, o relatório também irá atualizar, sem que você precise ficar atualizando manualmente, basta criar um script que faça isso para você.
 
 Para conseguir fazer tudo isso, teremos que aprender a lidar com os **Chuncks** de código, que são os trechos de código que serão executados pelo Quarto, e para isso, temos que aprender a lidar com os **Chuncks Options**, que são as opções que podemos passar para o Quarto, para que ele saiba como lidar com o trecho de código.
@@ -116,7 +121,7 @@ Link: [https://r4ds.hadley.nz/quarto](https://r4ds.hadley.nz/quarto)
 Através da tabela acima, você consegue entender o que as opções fazem, porém abaixo vou dar alguns exemplos.
 
 ```markdown
-Esse bloco em estamos atualmente funciona como se fosse uma célula de código do Jupyter Notebook, onde você pode executar o código e ver o output dele, para utiliza-la, basta colocar o código entre três crases e no início das três crases, colocar a linguagem que você está utilizando, no caso do R, seria `r`.
+Esse bloco em estamos atualmente funciona como se fosse uma célula de código do Jupyter Notebook, onde você pode executar o código e ver o output dele, para utilizá-la, basta colocar o código entre três crases e no início das três crases, colocar a linguagem que você está utilizando, no caso do R, seria `r`, no python seria `python`, etc.
 
 
 #| eval: TRUE
@@ -125,7 +130,7 @@ Esse bloco em estamos atualmente funciona como se fosse uma célula de código d
 
 Explicando um pouco os exemplos acima.
 
-- Através do `eval = TRUE`, o Quarto irá executar o trecho de código, porém como podemos ver, na imagem anterior, se utilizarmos apenas ele, o Quarto irá incluir o Output do código, possíveis gráficos, mensagens, warnings e tudo que for gerado pelo código.
+- Através do `eval = TRUE`, o Quarto irá executar o trecho de código, porém como podemos ver, na imagem anterior, se utilizarmos apenas ele, o Quarto irá incluir todos os possíveis Outputs do código, gráficos, mensagens, avisos, etc.
 - Com o include = FALSE combinado com o eval = TRUE, o Quarto irá executar o código, porém não irá incluir o output no documento.
 
 Isso é útil quando você quer fazer alguma operação, mas não quer que o output seja incluído no documento, como por exemplo criar uma variável auxiliar, fazer a leitura de um arquivo, etc.
@@ -134,9 +139,8 @@ Isso é útil quando você quer fazer alguma operação, mas não quer que o out
 ```markdown
 
 #| eval: TRUE
-#| include: TRUE
-#| message: FALSE
-#| warning: FALSE
+#| include: FALSE
+#| results: TRUE
 
 No exemplo acima por exemplo, o Quarto irá executar o código, incluir o output no documento, porém não irá incluir mensagens e warnings que forem gerados pelo código.
 Através disso, você consegue controlar o que é incluído no documento. Vou dar apenas esses exemplos, pois acredito que com isso você já consegue começar a escrever seus documentos e conforme for utilizando o Quarto, você vai aprendendo mais sobre as opções disponíveis e como utilizá-las.
@@ -144,23 +148,23 @@ Através disso, você consegue controlar o que é incluído no documento. Vou da
 
 # Mãos a Obra
 
-Com as introduções anterioes, você já é capaz de começar a escrever seus documentos, então vamos praticar um pouco, criar alguns gráficos, algumas tabelas e alguns outputs de texto. Através desse documento simples que será criado abaixo, poderemos ver como o Quarto funciona e em um outro momento, criaremos um documento do qual poderá ser automatizado.
-
-Nesse exemplo, iremos utilizar a base do `mtcars` que é uma base de dados que já vem no R e é muito utilizada para exemplos práticos.
+Com as introduções anterioes, você já é capaz de começar a escrever seus documentos, então vamos praticar um pouco, criar alguns gráficos, algumas tabelas e alguns outputs de texto. Através desse documento simples que será criado abaixo, poderemos ver como o Quarto funciona e em um outro momento, criaremos um documento do qual poderá ser automatizado e criaremos uma estrutura para essa altomatização.
 
 ```{r}
 #| eval: TRUE
 #| message: FALSE
 
 library(tidyverse)
+library(highcharter)
 
 mtcars_ <- mtcars %>% 
   tibble::rownames_to_column(var = "car")
 
-head(mtcars_)
+head(mtcars_) %>% 
+  knitr::kable()
 ```
 
-Acima podemos observar o código que foi executado, onde foi feita a leitura da base de dados `mtcars` e mostrado a manipulação para que os indices das linhas da base de dados virasse uma coluna, afinal, é o nome dos carros e é muito mais fácil de trabalhar dessa forma. Além dissom foi mostrado as primeiras linhas da base de dados, nada de mais, mas é um começo.
+Acima podemos observar o código que foi executado, onde foi feita a leitura da base de dados `mtcars` e mostrado a manipulação para que os indices das linhas da base de dados virasse uma coluna, afinal, é o nome dos carros e é muito mais fácil de trabalhar dessa forma. Além disso foi mostrado as primeiras linhas da base de dados e transformado em uma table através do `knitr::kable()`, nada demais, mas é um começo.
 
 Vamos criar uma lista com a descrição de cada variável da base de dados `mtcars`.
 
@@ -179,21 +183,21 @@ Vamos criar uma lista com a descrição de cada variável da base de dados `mtca
 * gear: Número de marchas
 * carb: Número de carburadores
 
-No próprio quarto poderiamos criar funções ou fazer manipulações de tabelas para tratar os dados, etc. A minha recomendação para isso é que seja criado funções auxiliares fora do arquivo e através da função `source("caminho/ao/arquivo_auxiliar.R")`, você pode incluir essas funções no seu documento. Isso é muito útil para manter o código organizado e como o objetivo do documento é ser um relatório, é importante que o código seja o mais limpo possível.
+No próprio Quarto poderiamos criar funções ou fazer manipulações de tabelas para tratar os dados, etc. A minha recomendação para isso é que seja criado funções auxiliares fora do arquivo e através da função `source("caminho/ao/arquivo_auxiliar.R")`, você pode incluir essas funções no seu documento. Isso é muito útil para manter o código organizado e como o objetivo do documento é ser um relatório, é importante que o código seja o mais limpo possível.
 
 No caso desse documento esses tratamentos de dados não serão feitos pois não é o objetivo do documento, mas é importante que você saiba que é possível e uma boa prática fazer isso.
 
 Agora que temos a descrição das variáveis e sabemos o que cada uma delas representa, podemos colocar no nosso relatório algumas informações sobre a base de dados, como por exemplo, disponibilizar no próprio texto quais são os três carros que possuem o maior **hp (Cavalos de Potência)**.
 
-### Exemplo de código inserido no texto
+#### Exemplo de código inserido no texto
 
-Atualmente nos dados analisaos, os 5 carros que possuem o maior **hp** são:
+Atualmente nos dados analisados, os 5 carros que possuem o maior **hp** são:
 
-`r paste(mtcars_ %>% arrange(desc(hp))%>% head(5) %>% pull(car), collapse = ", ")`
+***`r paste(mtcars_ %>% arrange(desc(hp))%>% head(5) %>% pull(car), collapse = ", ")`***
 
 E seus respectivos valores de **hp** são:
 
-`r paste(mtcars_ %>% arrange(desc(hp))%>% head(5) %>% pull(hp), collapse = ", ")`
+***`r paste(mtcars_ %>% arrange(desc(hp))%>% head(5) %>% pull(hp), collapse = ", ")`***
 
 Obviamente, essa não é a melhor forma de apresentar essa informação, poderiamos ver isso tabelado, ou até mesmo em um gráfico, mas para exemplificar o que pode ser feito, acredito que seja o suficiente.
 
@@ -219,29 +223,26 @@ O foco aqui não é a criação de gráficos, então não vou me aprofundar muit
 #| fig.width: 10
 #| fig.height: 6
 
-
-# Gráfico de dispersão entre hp e mpg
-mtcars_ %>% 
-  ggplot(aes(x = hp, y = mpg)) +
-  geom_point(colour = "#375a7e", alpha = 0.8) +
-  labs(title = "Relação entre hp e mpg",
-       x = "Cavalos de Potência (hp)",
-       y = "Milhas por Galão (mpg)") +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(
-      hjust = 0.5,
-      face = "bold",
-      size = 14
-      ),
-    axis.title = element_text(size = 12),
-    axis.text = element_text(size = 10)
-    )
+mtcars_ %>%
+  highcharter::hchart(
+  "scatter",
+  hcaes(x = hp, y = mpg),
+  color = "#375a7e"
+) %>%
+  hc_title(text = "Relação entre hp e mpg") %>%
+  hc_xAxis(title = list(text = "Cavalos de Potência (hp)")) %>% 
+  hc_yAxis(title = list(text = "Milhas por Galão (mpg)")) %>%
+  hc_add_theme(hc_theme_smpl()) %>%
+  hc_tooltip(pointFormat = "
+  Cavalos de Potência: {point.x} <br>
+  Milhas por Galão: {point.y}
+  "
+)
 ```
 
 No gráfico acima, foi feito um gráfico de dispersão entre **hp** e **mpg**, onde podemos ver a relação entre essas duas variáveis. Através desse gráfico, podemos ver que quanto maior o **hp**, menor o **mpg**, o que faz sentido, afinal, carros com mais cavalos de potência tendem a consumir mais combustível.
 
-Agora, vamos criar um gráfico de barras para ver a quantidade de carros que possuem cada número de cilindros.
+Agora, vamos criar um gráfico de barras para ver a quantidade de carros que possuem um número específico de cilíndros.
 
 ```{r}
 #| eval: TRUE
@@ -251,28 +252,184 @@ Agora, vamos criar um gráfico de barras para ver a quantidade de carros que pos
 #| fig.width: 10
 #| fig.height: 6
 
-mtcars_ %>% 
-  ggplot(aes(x = factor(cyl))) +
-  geom_bar(fill = "#375a7e", alpha = 0.8) +
-  geom_text(
-    aes(label = ..count..),
-    stat = "count",
-    vjust = -0.5,
-    size = 3
-    ) +
-  labs(title = "Quantidade de carros por número de cilindros",
-       x = "Número de cilindros",
-       y = "Quantidade de carros") +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(
-      hjust = 0.5,
-      face = "bold",
-      size = 14
-      ),
-    axis.title = element_text(size = 12),
-    axis.text = element_text(size = 10)
+mtcars_ %>%
+  count(cyl) %>%
+  arrange(desc(n)) %>%
+  highcharter::hchart(
+    "column",
+    hcaes(x = cyl, y = n),
+    color = "#375a7e"
+    ) %>%
+    hc_title(text = "Quantidade de carros por número de cilindros") %>%
+    hc_xAxis(title = list(text = "Número de cilindros")) %>% 
+    hc_yAxis(title = list(text = "Quantidade de carros")) %>%
+    hc_add_theme(hc_theme_smpl()) %>%
+    hc_tooltip(pointFormat = "
+    Número de cilindros: {point.x} <br>
+    Quantidade de carros: {point.y}
+    "
     )
 ```
 
 No gráfico acima, podemos ver a quantidade de carros que possuem cada número de cilindros, onde podemos ver que a maioria dos carros possuem 8 cilindros, seguido por 4 cilindros e por último 6 cilindros. Isso é interessante pois podemos ver que a maioria dos carros possuem 8 cilindros, o que pode ser um indicativo de que a maioria dos carros são carros mais potentes.
+
+### Lidando com tabelas
+
+O próprio markdown, consegue criar tabelas nativamente como pudemos ver acima, quando mostrei a sintaxe básica do markdown, porém, se você quiser criar tabelas mais customizadas, você tem algumas outras opções.
+Como neste documento Quarto estamos utilizando R, vou citar algumas bibliotecas que podem ser utilizadas para criar tabelas mais customizadas.
+
+-   [kableExtra](https://haozhu233.github.io/kableExtra/): o kableExtra é uma extensão do `knitr::kable` que permite criar tabelas mais customizadas com foco em customizações direto em HTML e LaTeX.
+-   [gt](https://gt.rstudio.com/): O gt é uma solução da Posit e sua principal força é a sua integração com tidyverse e também a sua forma de escrita que é muito parecida com o tidyverse.
+
+Ambos os pacotes acima são excelentes, mas são muito focados em Tabelas estáticas.
+
+-   [reactable](https://glin.github.io/reactable/): Também é uma solução da Posit, porém, é focada em tabelas interativas e é feita em React, utilizando o [reactR](https://react-r.github.io/reactR/), pensando no report que a gente está fazendo no momento, faz total sentido, pois o output do atual documento é um HTML, então, se você quiser criar uma tabela interativa, o reactable é uma excelente opção.
+-   [DT](https://rstudio.github.io/DT/): O DT também é uma solução da Posit e é focada em tabelas interativas, porém, ela vem como sendo um wrapper do [DataTables](https://datatables.net/), que é uma biblioteca JavaScript muito conhecida e muito utilizada para criar tabelas interativas.
+
+Pensando em tabela iterativas, ambas são excelentes, tenho a impressão de que o reactable é mais bonito e fácil de utilizar, porém é um pacote mais experimental, enquanto o DT é mais consolidado, com o DT você consegue fazer muitas manipulações estéticas e possui uma boa documentação, ou seja, o que você não encontra na documentação do [DT](https://rstudio.github.io/DT/) diretamente, você encontra na documentação do [DataTables](https://datatables.net/).
+
+Neste documento, irei fazer dois exemplos de tabelas, um utilizando o reactable e outro utilizando o DT.
+
+
+##### Manipulando minimamente a base de dados
+```{r}
+#| eval: TRUE
+#| include: TRUE
+#| message: TRUE
+#| warning: TRUE
+
+mtcars_brands <- mtcars_ %>%
+  mutate(
+    brand = stringr::word(car, 1, sep = " "),
+    brand = ifelse(brand == "Merc", "Mercedes", brand),
+    model = stringr::word(car, 2, -1, sep = " "),
+    am = ifelse(am == 0, "Automatic", "Manual"),
+  ) %>%
+  select(car, brand, model, everything())
+```
+
+#### Tabela com reactable
+
+```{r}
+#| eval: TRUE
+#| include: TRUE
+#| message: FALSE
+#| warning: FALSE
+
+reactable_table <- mtcars_brands %>%
+  select(
+    brand, model, mpg, hp, wt, qsec, am
+  ) %>%
+  reactable::reactable(
+    defaultPageSize = 5,
+    filterable = TRUE,
+    pagination = TRUE,
+    highlight = TRUE,
+    striped = TRUE,
+    compact = TRUE,
+    groupBy = c("brand", "am"),
+    columns = list(
+      am = reactable::colDef(
+        aggregate = "unique",
+      ),
+      model = reactable::colDef(
+        aggregate = "unique"
+      ),
+      mpg = reactable::colDef(
+        aggregate = "mean",
+        format = reactable::colFormat(
+          digits = 2,
+          suffix = " mpg"),
+      ),
+      hp = reactable::colDef(
+        aggregate = "mean",
+        format = reactable::colFormat(
+          digits = 2,
+          suffix = " hp"
+          ),
+      ),
+      wt = reactable::colDef(
+        aggregate = "mean",
+        format = reactable::colFormat(
+          digits = 2,
+          suffix = " wt"
+          ),
+      ),
+      qsec = reactable::colDef(
+        aggregate = "mean",
+        format = reactable::colFormat(
+          digits = 2,
+          suffix = " qsec"
+          ),
+      )
+    )
+  )
+
+reactable_table
+```
+
+Na tabela acima criamos uma tabela interativa com o reactable, onde podemos ver a média de **mpg**, **hp**, **wt** e **qsec** agrupados por **brand** e **am**. Além disso, podemos filtrar, paginar, destacar, etc. Através do reactable, conseguimos criar tabelas muito estéticas e interativas.
+
+#### Tabela com DT
+
+```{r}
+#| eval: TRUE
+#| include: TRUE
+#| message: FALSE
+#| warning: FALSE
+colnames(mtcars_brands) <- colnames(mtcars_brands) %>% str_to_upper()
+
+mtcars_brands %>%
+  select(
+    CAR:MODEL,
+    VS, AM,
+    everything()
+  ) %>% 
+  DT::datatable(
+      class = "row-border stripe hover",
+      style = "bootstrap4",
+      editable = TRUE,
+      options = list(
+        dom = "Bfrtip",
+        scrollX = TRUE,
+        scrollY = 350,
+        pageLength = 15,
+        initComplete = DT::JS(
+          "function(settings, json) {",
+          "$(this.api().table().header()).css({
+            'background-color': '#375a7e',
+            'color': 'white',
+            'padding': '0px',
+            'text-align': 'center'
+            });",
+          "}"
+        ),
+        columnDefs = list(
+          list(
+            orderable = TRUE,
+            targets = "_all",
+            className = "dt-center"
+          )
+        )
+      )
+  )
+```
+
+#####
+
+A tabela acima criada com com DT nos trás uma visão de tabela consolidada, onde podemos ver todas as variáveis da base de dados `mtcars` e podemos fazer algumas manipulações nela, como por exemplo, ordenar, filtrar, etc.
+
+Ambos os casos foram apenas tabelas de exemplo e vocês podem fazer **MUITO** mais com essas bibliotecas e deixar suas tabelas muito mais bonitas com um pouco de JavaScript e CSS, além de possibilitarem a interatividade com o usuário.
+
+### Conclusão
+
+Neste documento, aprendemos como utilizar o Quarto.
+
+Foi mostrado conceitos básicos de Markdown que são extremamente importantes para você começar a escrever seus documentos, foi mostrado como utilizar os **Chuncks** de código e como passar opções para eles, conseguimos colocar código no meio do texto que nos ajuda a criar relatórios muito dinâmicos, vimos o quanto é simples criar gráficos e tabelas e como podemos customizá-los.
+
+
+### Referências
+
+-   [Quarto](https://quarto.org/)
+-   [R4DS](https://r4ds.hadley.nz/quarto)
+-   [Tidyverse](https://www.tidyverse.org/)

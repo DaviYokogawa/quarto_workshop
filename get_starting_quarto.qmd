@@ -41,7 +41,7 @@ Hoje, o Quarto suporta nativamente as seguintes linguagens:
 
 -   JavaScrypt
 
-A evolução do Rmarkdown para o Quarto foi uma evolução natural, entrando muito em linha com a nova proposta da Posit, de criar um ambiente robusto para a Ciência de Dados, mas ao mesmo tempo esse ambiente não deveria depender do R e do RStudio. Um exemplo disso é o atual documento que você está lendo, que foi feito inteiramente no Quarto utilizando o VsCode, porém se eu quisesse, poderia optar por ferramentas como o Jupyter Notebook, Vim, Nano ou o próprio RStudio.
+A evolução do Rmarkdown para o Quarto foi uma evolução natural, entrando muito em linha com a nova proposta da Posit de criar um ambiente robusto para a Ciência de Dados, mas ao mesmo tempo esse ambiente não deveria depender do R e do RStudio. Um exemplo disso é o atual documento que você está lendo, que foi feito inteiramente no Quarto utilizando o VsCode, porém, se eu quisesse poderia optar por ferramentas como o Jupyter Notebook, Vim, Nano ou o próprio RStudio.
 
 O grande poder do Quarto no **MEU** ponto de vista é a facilidade de criar relatórios dinâmicos e automatizados, pois como podemos incluir trechos de código pelo relatório, fica fácil automatizar a criação de relatórios e fazer o que quisermos através do poder da programação.
 
@@ -59,7 +59,7 @@ Markdown é uma linguagem de marcação que foi criada por John Gruber e Aaron S
 
 ### Sintaxe Básica
 
-Através do que será mostrado abaixo, você será capaz de criar um documento básico em Markdown e consequentemente no Quarto, obviamente, o Markdown mais do que o que será mostrado abaixo, mas o que será mostrado é o suficiente para você começar a escrever seus documentos e será com isso que você irá lidar em 90% do tempo.
+Através do que será mostrado abaixo, você será capaz de criar um documento básico em Markdown e consequentemente no Quarto, obviamente, o Markdown possui mais do que será mostrado abaixo, mas é o suficiente para você começar a escrever seus documentos e você lidará com esses tópicos em 90% do tempo.
 
 +---------------------------------------------------------+---------------------------------------------------------+
 | Markdown Sintax                                         | Output                                                  |
@@ -205,7 +205,7 @@ Obviamente, essa não é a melhor forma de apresentar essa informação, poderia
 O código executado acima, obviamente não será mostrado pois ele faz parte do output do código, mas olhando no canto superior direito, podemos encontrar todo o código que foi executado para gerar os outputs.
 :::
 
-Para pensarmos um pouco na utilidade do que foi apresentado no exemplo acima, pense que você possui uma loja de carros em que todos os dias existe uma rotatividade de carros, então, você pode criar um relatório que se atualiza diariamente para você com as informações dos carros que possui em sua loja. Quais marcas foram mais vendidas, quais modelos, quais são mais possuem para venda atualmente, enfim, apenas alguns exemplos, o que determina o que você vai apresentar é a necessidade do negócio.
+Para pensarmos um pouco na utilidade do que foi apresentado no exemplo acima, pense que você possui uma loja de carros em que todos os dias existe uma rotatividade de carros, então, você pode criar um relatório que se atualiza diariamente para você com as informações dos carros que possui em sua loja. Quais marcas foram mais vendidas, quais modelos, quais carros estão para venda atualmente, enfim, apenas alguns exemplos, o que determina o que você vai apresentar é a necessidade do negócio.
 
 #### Criando alguns gráficos
 
